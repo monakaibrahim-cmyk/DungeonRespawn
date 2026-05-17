@@ -278,13 +278,22 @@ void DSPlayerScript::OnPlayerLogout(Player* player)
         return;
     }
 
-    for (auto it = playersToTeleport.begin(); it < playersToTeleport.end(); ++it)
-    {
-        if (player->GetGUID() == (*it))
-        {
-            playersToTeleport.erase(it);
-        }
-    }
+    // for (auto it = playersToTeleport.begin(); it < playersToTeleport.end(); ++it)
+    // {
+    //     if (player->GetGUID() == (*it))
+    //     {
+    //         playersToTeleport.erase(it);
+    //     }
+    // }
+
+    playersToTeleport.erase(
+        std::remove(
+            playersToTeleport.begin(),
+            playersToTeleport.end(),
+            player->GetGUID()
+        ),
+        playersToTeleport.end()
+    );
 }
 
 void SC_AddDungeonRespawnScripts()

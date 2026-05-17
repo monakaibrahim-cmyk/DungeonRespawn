@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Config.h"
 #include "Chat.h"
+#include <algorithm>
 #include <vector>
 
 struct DungeonData
